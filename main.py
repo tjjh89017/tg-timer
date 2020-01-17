@@ -47,7 +47,9 @@ def reply_handler(bot, update):
         if diff > datetime.timedelta(minutes=30):
             logger.info("reply")
             last_reply_time = now
-            update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
+            remain_time = now - datetime.datetime(2021, 3, 4)
+            #update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
+            update.message.reply_text("距離Jimmy退伍還有{}天".format(remain_time.days))
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
