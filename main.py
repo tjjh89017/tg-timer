@@ -39,14 +39,12 @@ def reply_handler(bot, update):
     text = update.message.text
     logger.info(text)
     logger.info(username)
-    #if username == 'cming_ou':
-    if True:
+    if username == 'cming_ou':
         now = datetime.datetime.now()
         diff = now - last_reply_time
         logger.info(repr(diff))
         logger.info(repr(diff > timedelta(minutes=30)))
-        #if diff > timedelta(minutes=30):
-        if True:
+        if diff > timedelta(minutes=30):
             last_reply_time = now
             update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
 
