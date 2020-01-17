@@ -38,7 +38,9 @@ def reply_handler(bot, update):
     username = update.message.from_user.username
     text = update.message.text
     logger.info(text)
-    if username == 'cming_ou':
+    logger.info(username)
+    #if username == 'cming_ou':
+    if True:
         now = datetime.datetime.now()
         diff = now - last_reply_time
         logger.info(repr(diff))
