@@ -49,7 +49,7 @@ def reply_handler(bot, update):
             last_reply_time = now
             remain_time = datetime.datetime(2021, 3, 4) - now
             #update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
-            update.message.reply_text("距離Jimmy退伍還有{}天".format(remain_time.days))
+            update.message.reply_text("距離Jimmy退伍與EdgeCore過勞者聯盟解散還有{}天".format(remain_time.days))
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
