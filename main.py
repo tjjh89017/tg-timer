@@ -19,7 +19,7 @@ bot = telegram.Bot(TELEGRAM_TOKEN)
 # Enable logging
 logger = app.logger
 
-last_reply_time = datetime.datetime.now()
+last_reply_time = datetime.datetime.min
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
