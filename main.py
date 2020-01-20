@@ -57,6 +57,7 @@ def command_handler(bot, update):
     logger.info(update.message.text)
     logger.info(type(bot))
     logger.info(type(update))
+    update.message.reply_text("test")
     #update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
 
 dispatcher = Dispatcher(bot, None)
