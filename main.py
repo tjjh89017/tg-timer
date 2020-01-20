@@ -9,7 +9,7 @@ import datetime
 from flask import Flask, request
 
 import telegram
-from telegram.ext import Dispatcher, MessageHandler, Filters
+from telegram.ext import Dispatcher, MessageHandler, CommandHandler, Filters
 
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN', None)
 
@@ -49,10 +49,15 @@ def reply_handler(bot, update):
             last_reply_time = now
             remain_time = datetime.datetime(2021, 3, 4) - now
             #update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
-            update.message.reply_text("距離Jimmy退伍與EdgeCore過勞者聯盟解散還有{}天".format(remain_time.days))
+            update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
+
+def command_handler(bot, update):
+    logger.info(update.message.from_user.username)
+    update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
+dispatcher.add_handler(CommandHandler('show', command_handler))
 
 if __name__ == '__main__':
     app.run(debug=True)
