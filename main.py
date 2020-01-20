@@ -43,8 +43,8 @@ def reply_handler(bot, update):
         now = datetime.datetime.now()
         diff = now - last_reply_time
         logger.info(repr(diff))
-        logger.info(repr(diff > datetime.timedelta(minutes=30)))
-        if diff > datetime.timedelta(minutes=30):
+        logger.info(repr(diff > datetime.timedelta(hours=12)))
+        if diff > datetime.timedelta(hours=12):
             logger.info("reply")
             last_reply_time = now
             remain_time = datetime.datetime(2021, 3, 4) - now
