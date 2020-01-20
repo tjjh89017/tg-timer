@@ -48,8 +48,7 @@ def reply_handler(bot, update):
             logger.info("reply")
             last_reply_time = now
             remain_time = datetime.datetime(2021, 3, 4) - now
-            #update.message.reply_text("距離Jimmy退伍還有{}天".format('XX'))
-            update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
+            #update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
 
 def command_handler(bot, update):
     logger.info('command')
