@@ -55,7 +55,9 @@ def command_handler(bot, update):
     logger.info('command')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
-    update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
+    logger.info(type(bot))
+    logger.info(type(update))
+    #update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天".format(remain_time.days))
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
