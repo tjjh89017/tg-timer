@@ -61,7 +61,8 @@ def command_handler(bot, update):
     now = datetime.datetime.now()
     remain_time = datetime.datetime(2021, 3, 4) - now
     pass_time = now - datetime.datetime(2020, 1, 27)
-    update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了".format(remain_time.days, pass_time.days))
+    health_time = now - datetime.datetime(2020, 1, 31)
+    update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了\n每日關心Jimmy健康狀態,已經自主隔離{}天了".format(remain_time.days, pass_time.days, health_time.days))
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
