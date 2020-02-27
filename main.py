@@ -5,6 +5,7 @@ import os
 import sys
 import logging
 import datetime
+import random
 
 from flask import Flask, request
 
@@ -20,6 +21,10 @@ bot = telegram.Bot(TELEGRAM_TOKEN)
 logger = app.logger
 
 last_reply_time = datetime.datetime.min
+
+lunch = [
+    '佳佳牛排',
+]
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
@@ -64,9 +69,17 @@ def command_handler(bot, update):
     health_time = now - datetime.datetime(2020, 1, 31)
     update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了\n每日關心Jimmy健康狀態,已經自主隔離{}天了".format(remain_time.days, pass_time.days, health_time.days))
 
+def lunch_hander(bot, update):
+    logger.info('lunch')
+    logger.info(update.message.from_user.username)
+    logger.info(update.message.text)
+    update.message.reply_text("吃{}".format(random.choice(lunch)))
+
+
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
 dispatcher.add_handler(CommandHandler('show', command_handler))
+dispatcher.add_handler(CommandHandler('lunch', lunch_hander))
 
 if __name__ == '__main__':
     app.run(debug=True)
