@@ -93,11 +93,17 @@ def lunch_hander(bot, update):
     logger.info(update.message.text)
     update.message.reply_text("吃{}".format(random.choice(lunch)))
 
+def jianhaoch_hander(bot, update)
+    logger.info('jianhaoch')
+    logger.info(update.message.from_user.username)
+    logger.info(update.message.text)
+    update.message.reply_text("@jianhaoch 建豪說說哥 QQ")
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
 dispatcher.add_handler(CommandHandler('show', command_handler))
 dispatcher.add_handler(CommandHandler('lunch', lunch_hander))
+dispatcher.add_handler(CommandHandler('jianhaoch', jianhaoch_hander))
 
 if __name__ == '__main__':
     app.run(debug=True)
