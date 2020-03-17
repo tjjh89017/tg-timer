@@ -97,7 +97,7 @@ def jianhaoch_hander(bot, update)
     logger.info('jianhaoch')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
-    update.message.reply_text("@jianhaoch 建豪說說哥 QQ")
+    update.message.reply_text("@jianhaoch 世界越快·豪·則慢-士豪說說哥參上!")
 
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
