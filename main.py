@@ -25,6 +25,7 @@ logger = app.logger
 last_reply_time = datetime.datetime.min
 
 quote_last_reply_time = datetime.datetime.min
+quote_cache = ""
 
 lunch = [
     '智邦美味一樓餐廳',
@@ -105,20 +106,22 @@ def jianhaoch_handler(bot, update):
 
 def quote_handler(bot, update):
     global quote_last_reply_time
+    global quote_cache
     logger.info('quote')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
     # get data from wikiquote
     try:
+        # if timeout > 15min, renew the quote
         now = datetime.datetime.now()
         diff = now - quote_last_reply_time
-        if diff > datetime.timedelta(minutes=2):
+        if diff > datetime.timedelta(minutes=15):
             quote_last_reply_time = now
             raw_data = requests.get('https://zh.wikiquote.org/w/api.php?action=parse&format=json&formatversion=2&prop=wikitext&page=Wikiquote:每日名言/{}月{}日'.format(now.month, now.day)).text
             data = json.loads(raw_data)
-            update.message.reply_text(data['parse']['wikitext'])
-        else:
-            update.message.reply_text('Too frequently.')
+            quote_cache = data['parse']['wikitext']
+
+        update.message.reply_text(quote_cache)
     except Exception as e:
         logger.info('except in quote, but ingore')
         logger.info(e)
