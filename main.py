@@ -6,6 +6,8 @@ import sys
 import logging
 import datetime
 import random
+import requests
+import json
 
 from flask import Flask, request
 
@@ -21,6 +23,8 @@ bot = telegram.Bot(TELEGRAM_TOKEN)
 logger = app.logger
 
 last_reply_time = datetime.datetime.min
+
+quote_last_reply_time = datetime.datetime.min
 
 lunch = [
     '智邦美味一樓餐廳',
@@ -87,23 +91,45 @@ def command_handler(bot, update):
     health_time = now - datetime.datetime(2020, 3, 10)
     update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了\n每日關心Jimmy健康狀態,已經自主隔離{}天了".format(remain_time.days, pass_time.days, health_time.days))
 
-def lunch_hander(bot, update):
+def lunch_handler(bot, update):
     logger.info('lunch')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
     update.message.reply_text("吃{}".format(random.choice(lunch)))
 
-def jianhaoch_hander(bot, update):
+def jianhaoch_handler(bot, update):
     logger.info('jianhaoch')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
     update.message.reply_text("@jianhaoch 世界越快·豪·則慢-士豪說說哥參上!")
 
+def quote_handler(bot, update):
+    global quote_last_reply_time
+    logger.info('quote')
+    logger.info(update.message.from_user.username)
+    logger.info(update.message.text)
+    # get data from wikiquote
+    try:
+        now = datetime.datetime.now()
+        diff = now - quote_last_reply_time
+        if diff > datetime.timedelta(minutes=2):
+            quote_last_reply_time = now
+            raw_data = requests.get('https://zh.wikiquote.org/w/api.php?action=parse&format=json&formatversion=2&prop=wikitext&page=Wikiquote:每日名言/{}月{}日'.format(now.month, now.day)).text
+            data = json.loads(raw_data)
+            update.message.reply_text(data['parse']['wikitext'])
+        else:
+            update.message.reply_text('Too frequently.')
+    except Exception as e:
+        logger.info('except in quote, but ingore')
+        logger.info(e)
+        pass
+
 dispatcher = Dispatcher(bot, None)
 dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
 dispatcher.add_handler(CommandHandler('show', command_handler))
-dispatcher.add_handler(CommandHandler('lunch', lunch_hander))
-dispatcher.add_handler(CommandHandler('jianhaoch', jianhaoch_hander))
+dispatcher.add_handler(CommandHandler('lunch', lunch_handler))
+dispatcher.add_handler(CommandHandler('jianhaoch', jianhaoch_handler))
+dispatcher.add_handler(CommandHandler('quote', quote_handler))
 
 if __name__ == '__main__':
     app.run(debug=True)
