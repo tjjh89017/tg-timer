@@ -87,10 +87,13 @@ def command_handler(bot, update):
     logger.info(type(update))
     #update.message.reply_text("test")
     now = datetime.datetime.now()
-    remain_time = datetime.datetime(2021, 3, 4) - now
-    pass_time = now - datetime.datetime(2020, 1, 27)
-    health_time = now - datetime.datetime(2020, 3, 10)
-    update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了\n每日關心Jimmy健康狀態,已經自主隔離{}天了".format(remain_time.days, pass_time.days, health_time.days))
+    if now == datetime.datetime(2020, 4, 1):
+        update.message.reply_text("Jimmy退伍與Edgecore過勞者聯盟解散就在今天!!\n\n\n\n\n\n\n\n\n\nHappy April Fools' Day!!")
+    else:
+        remain_time = datetime.datetime(2021, 3, 4) - now
+        pass_time = now - datetime.datetime(2020, 1, 27)
+        health_time = now - datetime.datetime(2020, 3, 10)
+        update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了\n每日關心Jimmy健康狀態,已經自主隔離{}天了".format(remain_time.days, pass_time.days, health_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
