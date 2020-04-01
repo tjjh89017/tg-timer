@@ -87,7 +87,7 @@ def command_handler(bot, update):
     logger.info(type(update))
     #update.message.reply_text("test")
     now = datetime.datetime.now()
-    if now == datetime.datetime(2020, 4, 1):
+    if (now - datetime.datetime(2020, 4, 1)) < datetime.timedelta(hours=24):
         update.message.reply_text("Jimmy退伍與Edgecore過勞者聯盟解散就在今天!!\n\n\n\n\n\n\n\n\n\nHappy April Fools' Day!!")
     else:
         remain_time = datetime.datetime(2021, 3, 4) - now
