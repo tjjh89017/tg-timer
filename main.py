@@ -98,7 +98,7 @@ def command_handler(bot, update):
 """距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天
 Aweimeow都已經退伍{}天了
 每日關心Jimmy健康狀態,已經自主隔離{}天了
-建豪已經進愛情的墳墓{}天了
+恭喜建豪已經進愛情的墳墓{}天了
 """.format(remain_time.days, pass_time.days, health_time.days, marry_time.days))
 
 def lunch_handler(bot, update):
