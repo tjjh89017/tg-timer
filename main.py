@@ -92,12 +92,12 @@ def command_handler(bot, update):
     else:
         remain_time = datetime.datetime(2021, 3, 4) - now
         pass_time = now - datetime.datetime(2020, 1, 27)
-        health_time = now - datetime.datetime(2020, 3, 10)
+        health_time = now - datetime.datetime(2020, 4, 10)
         marry_time = now - datetime.datetime(2020, 4, 2)
         update.message.reply_text(
 """距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天
 Aweimeow都已經退伍{}天了
-每日關心Jimmy健康狀態,已經自主隔離{}天了
+每日關心Date健康狀態,已經WFH隔離{}天了
 恭喜建豪已經進愛情的墳墓{}天了
 """.format(remain_time.days, pass_time.days, health_time.days, marry_time.days))
 
