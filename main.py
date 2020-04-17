@@ -103,7 +103,7 @@ Aweimeow都已經退伍{}天了
 每日關心jianhao健康狀態,已經WFH隔離{}天了
 每日關心Date健康狀態,已經WFH隔離{}天了
 恭喜建豪已經進愛情的墳墓{}天了
-""".format(remain_time.days, find_a_job_time, pass_time.days, hao_health_time.days, date_health_time.days, marry_time.days))
+""".format(remain_time.days, find_a_job_time.days, pass_time.days, hao_health_time.days, date_health_time.days, marry_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
