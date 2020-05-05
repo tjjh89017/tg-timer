@@ -115,7 +115,12 @@ def jianhaoch_handler(bot, update):
     logger.info('jianhaoch')
     logger.info(update.message.from_user.username)
     logger.info(update.message.text)
-    update.message.reply_text("@jianhaoch 世界越快·豪·則慢-超級士豪明日復明日天天說說哥參上!")
+    update.message.reply_text(
+"""
+@jianhaoch 世界越快·豪·則慢-超級士豪明日復明日天天說說哥參上!
+@jianhaoch 借USB KVM
+@jianhaoch 欠假爛215 XD
+""")
 
 def quote_handler(bot, update):
     global quote_last_reply_time
