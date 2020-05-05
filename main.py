@@ -119,7 +119,7 @@ def jianhaoch_handler(bot, update):
 """
 @jianhaoch 世界越快·豪·則慢-超級士豪明日復明日天天說說哥參上!
 @jianhaoch 借USB KVM
-@jianhaoch 欠假爛215 XD
+@jianhaoch 欠假爛520 XD
 """)
 
 def quote_handler(bot, update):
