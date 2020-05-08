@@ -91,19 +91,15 @@ def command_handler(bot, update):
         update.message.reply_text("Jimmy退伍與Edgecore過勞者聯盟解散就在今天!!\n\n\n\n\n\n\n\n\n\nHappy April Fools' Day!!")
     else:
         remain_time = datetime.datetime(2021, 3, 4) - now
-        pass_time = now - datetime.datetime(2020, 1, 27)
-        hao_health_time = now - datetime.datetime(2020, 4, 6)
-        date_health_time = now - datetime.datetime(2020, 4, 10)
-        marry_time = now - datetime.datetime(2020, 4, 2)
         find_a_job_time = datetime.datetime(2020, 12, 1) - now
+        pass_time = now - datetime.datetime(2020, 1, 27)
+        marry_time = now - datetime.datetime(2020, 4, 2)
         update.message.reply_text(
 """距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天
 距離開始找新工作還有{}天
-Aweimeow都已經退伍{}天了
-每日關心jianhao健康狀態,已經WFH隔離{}天了
-每日關心Date健康狀態,已經WFH隔離{}天了
+距離Aweimeow退伍已經{}天，幫聯盟開拓台中版圖進行中
 恭喜建豪已經進愛情的墳墓{}天了
-""".format(remain_time.days, find_a_job_time.days, pass_time.days, hao_health_time.days, date_health_time.days, marry_time.days))
+""".format(remain_time.days, find_a_job_time.days, pass_time.days, marry_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
@@ -119,7 +115,7 @@ def jianhaoch_handler(bot, update):
 """
 @jianhaoch 世界越快·豪·則慢-超級士豪明日復明日天天說說哥參上!
 @jianhaoch 借USB KVM
-@jianhaoch 欠假爛520 XD
+@jianhaoch 要吃的店都不開
 """)
 
 def quote_handler(bot, update):
