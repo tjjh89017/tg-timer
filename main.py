@@ -49,6 +49,9 @@ lunch = [
     '你自己決定吧!',
 ]
 
+def round100(num):
+    return ((num + 50) // 100 * 100)
+
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
     """Set route /hook with POST method will trigger this method."""
@@ -75,11 +78,11 @@ def command_handler(bot, update):
         pass_time = now - datetime.datetime(2020, 1, 27)
         marry_time = now - datetime.datetime(2020, 4, 2)
         update.message.reply_text(
-"""距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天
+"""距離Jimmy退伍與Edgecore過勞者聯盟解散大約還有{}天
 距離開始找新工作還有{}天
 距離Aweimeow退伍已經{}天，幫聯盟開拓台中版圖進行中
 恭喜建豪已經進愛情的墳墓{}天了
-""".format(remain_time.days, find_a_job_time.days, pass_time.days, marry_time.days))
+""".format(round100(remain_time.days), find_a_job_time.days, pass_time.days, marry_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
