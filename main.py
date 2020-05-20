@@ -59,26 +59,6 @@ def webhook_handler():
         dispatcher.process_update(update)
     return 'ok'
 
-def reply_handler(bot, update):
-    """Reply message."""
-    """check with from id"""
-    global last_reply_time
-    username = update.message.from_user.username
-    text = update.message.text
-    logger.info(text)
-    logger.info(username)
-    if username == 'cming_ou':
-        now = datetime.datetime.now()
-        diff = now - last_reply_time
-        logger.info(repr(diff))
-        logger.info(repr(diff > datetime.timedelta(hours=12)))
-        if diff > datetime.timedelta(hours=12):
-            logger.info("reply")
-            last_reply_time = now
-            remain_time = datetime.datetime(2021, 3, 4) - now
-            pass_time = now - datetime.datetime(2020, 1, 27)
-            #update.message.reply_text("距離Jimmy退伍與Edgecore過勞者聯盟解散還有{}天\nAweimeow都已經退伍{}天了".format(remain_time.days, pass_time.days))
-
 def command_handler(bot, update):
     logger.info('command')
     logger.info(update.message.from_user.username)
@@ -142,7 +122,6 @@ def quote_handler(bot, update):
         pass
 
 dispatcher = Dispatcher(bot, None)
-dispatcher.add_handler(MessageHandler(Filters.text, reply_handler))
 dispatcher.add_handler(CommandHandler('show', command_handler))
 dispatcher.add_handler(CommandHandler('lunch', lunch_handler))
 dispatcher.add_handler(CommandHandler('jianhaoch', jianhaoch_handler))
