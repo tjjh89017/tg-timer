@@ -82,7 +82,7 @@ def command_handler(bot, update):
 距離開始找新工作還有{}天
 距離Aweimeow退伍已經{}天，幫聯盟開拓台中版圖進行中
 恭喜建豪已經進愛情的墳墓{}天了
-""".format(round100(remain_time.days), find_a_job_time.days, pass_time.days, marry_time.days))
+""".format(remain_time.days, find_a_job_time.days, pass_time.days, marry_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
