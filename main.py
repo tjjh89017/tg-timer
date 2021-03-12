@@ -77,7 +77,7 @@ def command_handler(bot, update):
     jianhao_marry_time = now - datetime.datetime(2020, 4, 2)
     update.message.reply_text(
 """距離今年結束還有{}天
-距離Jalen退伍還有{}天
+距離Jalen開心地去放風還有{}天
 恭喜Jimmy退伍已經{}天
 恭喜Aweimeow退伍已經{}天
 恭喜建豪已經進愛情的墳墓{}天了
