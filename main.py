@@ -70,19 +70,18 @@ def command_handler(bot, update):
     logger.info(type(update))
     #update.message.reply_text("test")
     now = datetime.datetime.now()
-    if (now - datetime.datetime(2020, 4, 1)) < datetime.timedelta(hours=24):
-        update.message.reply_text("Jimmy退伍與Edgecore過勞者聯盟解散就在今天!!\n\n\n\n\n\n\n\n\n\nHappy April Fools' Day!!")
-    else:
-        remain_time = datetime.datetime(2021, 3, 4) - now
-        find_a_job_time = datetime.datetime(2020, 12, 1) - now
-        pass_time = now - datetime.datetime(2020, 1, 27)
-        marry_time = now - datetime.datetime(2020, 4, 2)
-        update.message.reply_text(
-"""距離Jimmy退伍與Edgecore過勞者聯盟解散大約還有{}天
-距離開始找新工作還有{}天
-距離Aweimeow退伍已經{}天，幫聯盟開拓台中版圖進行中
+    remain_time = datetime.datetime(now.year, 12, 31) - now
+    jalen_remain_time = datetime.datetime(2021, 4, 30) - now
+    jimmy_pass_time = now - datetime.datetime(2021, 3, 4)
+    weiyu_pass_time = now - datetime.datetime(2020, 1, 27)
+    jianhao_marry_time = now - datetime.datetime(2020, 4, 2)
+    update.message.reply_text(
+"""距離今年結束還有{}天
+距離Jalen退伍還有{}天
+恭喜Jimmy退伍已經{}天
+恭喜Aweimeow退伍已經{}天
 恭喜建豪已經進愛情的墳墓{}天了
-""".format(remain_time.days, find_a_job_time.days, pass_time.days, marry_time.days))
+""".format(remain_time.days, jalen_remain_time.days, jimmy_pass_time.days, weiyu_pass_time.days, jianhao_marry_time.days))
 
 def lunch_handler(bot, update):
     logger.info('lunch')
